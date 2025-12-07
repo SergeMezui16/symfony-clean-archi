@@ -12,6 +12,7 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "8.0.*",
         "symfony/runtime": "8.0.*",
+        "symfony/twig-bundle": "8.0.*",
         "symfony/yaml": "8.0.*"
     },
     "require-dev": {
@@ -64,6 +65,21 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "app:code-quality": [
+            "./vendor/bin/ecs check",
+            "bin/console lint:yaml config --parse-tags",
+            "bin/console lint:twig templates",
+            "bin/console lint:container",
+            "./vendor/bin/phpstan analyse --memory-limit=-1 --configuration=phpstan.dist.neon",
+            "./vendor/bin/rector --dry-run"
+        ],
+        "app:tests": [
+            "APP_ENV=test ./vendor/bin/phpunit"
+        ],
+        "app:env": [
+            "APP_RUNTIME_ENV=prod bin/console secrets:decrypt-to-local --force",
+            "bin/console dotenv:dump prod"
         ]
     },
     "conflict": {
