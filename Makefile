@@ -35,7 +35,6 @@ start: ## Start docker containers
 	@echo "- Web app: http://localhost:8000"
 	@echo "- Adminer: http://localhost:8082 (System: PostgreSQL, Server: database, User: root, Password: root, Database: app)"
 	@echo "- MailPit: http://localhost:8025 (dsn: smtp://mailer:1025)"
-	@echo "- Sea Weed fs: http://localhost:8888 (endpoint: http://seaweedfs:8333, Username: user, Password: password)"
 
 .PHONY: restart
 restart: ## Restart docker containers
