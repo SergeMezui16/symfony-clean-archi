@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marketplace\Shared\Presentation\Web\Controller;
+namespace CleanArchi\Shared\Presentation\Web\Controller;
 
 use CleanArchi\Shared\Infrastructure\Framework\Symfony\Controller\WebAbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +15,6 @@ final class HomeController extends WebAbstractController
 {
     public function __invoke(): Response
     {
-        return $this->render('home.html.twig');
+        return $this->render('shared/pages/home.html.twig', ['name' => 'World!']);
     }
 }
