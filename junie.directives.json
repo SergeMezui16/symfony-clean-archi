@@ -1,0 +1,16 @@
+{
+    "execution": {
+        "php": {
+            "command": "docker exec -i php php",
+            "description": "Use the PHP interpreter inside the Docker container named 'php'."
+        }
+    },
+    "context": {
+        "rules": [
+            {
+                "match": "php",
+                "replace_with": "docker exec -i php php"
+            }
+        ]
+    }
+}
