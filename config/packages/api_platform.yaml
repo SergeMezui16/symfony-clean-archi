@@ -1,0 +1,24 @@
+api_platform:
+    title: Hello API Platform
+    version: 1.0.0
+    enable_swagger_ui: true
+    enable_re_doc: false
+    #    asset_package: 'api_platform'
+    mapping:
+        paths:
+            - '%kernel.project_dir%/src/Shared/Presentation/Api/Resource/'
+    formats:
+        jsonld:
+            mime_types: [ 'application/ld+json' ]
+        json:
+            mime_types: [ 'application/json' ]
+        xml:
+            mime_types: [ 'application/xml', 'application/xml-dtd', 'application/atom+xml' ]
+        csv:
+            mime_types: [ 'application/csv', 'text/csv' ]
+        html:
+            mime_types: [ 'text/html' ]
+    defaults:
+        stateless: true
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
