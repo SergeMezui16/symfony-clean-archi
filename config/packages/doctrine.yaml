@@ -4,7 +4,7 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         types:
-            array: CleanArchi\Shared\Infrastructure\Persistence\Doctrine\DBAL\Types\DateTimeType
+            array: CleanArchi\Shared\Infrastructure\Persistence\Doctrine\DBAL\Types\ArrayType
             datetime: CleanArchi\Shared\Infrastructure\Persistence\Doctrine\DBAL\Types\DateTimeType
             email: CleanArchi\Shared\Infrastructure\Persistence\Doctrine\DBAL\Types\EmailType
     orm:
