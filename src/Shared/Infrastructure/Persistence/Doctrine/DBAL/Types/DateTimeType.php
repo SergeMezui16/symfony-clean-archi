@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace CleanArchi\Shared\Infrastructure\Persistence\Doctrine\DBAL\Types;
 
-use Carbon\Doctrine\CarbonType;
 use CleanArchi\Shared\Domain\Model\ValueObject\DateTime;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\DateTimeImmutableType;
 
-class DateTimeType extends CarbonType
+class DateTimeType extends DateTimeImmutableType
 {
-    protected const string TYPE = 'datetime';
+    private const string TYPE = 'datetime';
 
-    /**
-     * @psalm-return DateTime::class
-     */
-    protected function getCarbonClassName(): string
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?DateTime
     {
-        return DateTime::class;
+        if (null === $value || $value instanceof DateTime) {
+            return $value;
+        }
+
+        $converted = parent::convertToPHPValue($value, $platform);
+
+        return $converted ? DateTime::instance($converted) : null;
     }
 
     public function getName(): string
